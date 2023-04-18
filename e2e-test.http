@@ -1,0 +1,50 @@
+###
+POST http://localhost:8081/users/
+Content-Type: application/json
+
+{
+  "username": "test_name"
+}
+
+###
+GET http://localhost:8081/users/1
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+        client.assert(response.body.amountOfPosts == 0, "Default amount of ports is not 0");
+        client.assert(response.body.username == "test_name", "Username is wrong");
+    });
+%}
+
+###
+POST http://localhost:8082/posts
+Content-Type: application/json
+
+{
+  "authorId": 1,
+  "text": "some text"
+}
+
+###
+GET http://localhost:8081/users/1
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+        client.assert(response.body.amountOfPosts == 1, "Default amount of ports is not 1");
+    });
+%}
+
+###
+DELETE http://localhost:8082/posts/1
+
+###
+GET http://localhost:8081/users/1
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+        client.assert(response.body.amountOfPosts == 0, "Default amount of ports is not 0");
+    });
+%}

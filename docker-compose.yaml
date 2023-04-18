@@ -20,8 +20,7 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
-        delay: 10s
-        max_attempts: 3
+        max_attempts: 5
     depends_on:
       - db
     environment:
@@ -36,8 +35,7 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
-        delay: 10s
-        max_attempts: 3
+        max_attempts: 5
     depends_on:
       - db
     environment:
