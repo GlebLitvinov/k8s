@@ -8,3 +8,4 @@ create table if not exists users
     amount_of_posts int
 );
 
+ALTER TABLE users ADD CONSTRAINT check_nonnegative_value CHECK (amount_of_posts >= 0);
