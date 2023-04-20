@@ -10,7 +10,7 @@ This repository contains my HW for EPAM Kubernetes for Java Engineers course
 
 To verify that everything works:
  - Replace `epamhleblitvinau` with your docker hub login in [build users](users/rebuild-docker.sh), [build posts](posts/rebuild-docker.sh), [docker compose](docker-compose.yaml) files
-  - Run [build users](users/rebuild-docker.sh) and [build posts](posts/rebuild-docker.sh) 
+  - Run [rebuild docker](rebuild-docker.sh) 
  - Run `docker compose up` from root directory
  - Wait until everything is up and running (services might restart couple times because init scripts are not finished and DBs are not created yet)
  - Run [e2e test](e2e-test.http)
